@@ -13,7 +13,7 @@ public class RestAssuredExercises1 {
 	/*******************************************************
 	 * Send a GET request to
 	 * http://ergast.com/api/f1/2015/drivers.json
-	 * en check that the answer has HTTP status code 200 
+	 * and check that the answer has HTTP status code 200 
 	 ******************************************************/
 	
 	@Test
@@ -27,7 +27,7 @@ public class RestAssuredExercises1 {
 	/*******************************************************
 	 * Send a GET request to
 	 * http://ergast.com/api/f1/incorrect.json
-	 * en check that the answer has HTTP status code 400 
+	 * and check that the answer has HTTP status code 400 
 	 ******************************************************/
 	
 	@Test
