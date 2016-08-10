@@ -2,32 +2,32 @@
 <testng-results skipped="0" failed="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="5155" started-at="2016-06-07T09:36:37Z" finished-at="2016-06-07T09:36:42Z">
+  <suite name="Default suite" duration-ms="3750" started-at="2016-08-10T20:41:48Z" finished-at="2016-08-10T20:41:52Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="5155" started-at="2016-06-07T09:36:37Z" finished-at="2016-06-07T09:36:42Z">
+    <test name="Default test" duration-ms="3750" started-at="2016-08-10T20:41:48Z" finished-at="2016-08-10T20:41:52Z">
       <class name="com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1">
-        <test-method status="PASS" signature="checkResponseCodeForCorrectRequest()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkResponseCodeForCorrectRequest" duration-ms="3339" started-at="2016-06-07T11:36:37Z" finished-at="2016-06-07T11:36:40Z">
+        <test-method status="PASS" signature="checkResponseCodeForCorrectRequest()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkResponseCodeForCorrectRequest" duration-ms="2078" started-at="2016-08-10T22:41:48Z" finished-at="2016-08-10T22:41:50Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkResponseCodeForCorrectRequest -->
-        <test-method status="PASS" signature="checkResponseCodeForIncorrectRequest()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkResponseCodeForIncorrectRequest" duration-ms="68" started-at="2016-06-07T11:36:40Z" finished-at="2016-06-07T11:36:40Z">
+        <test-method status="PASS" signature="checkResponseCodeForIncorrectRequest()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkResponseCodeForIncorrectRequest" duration-ms="141" started-at="2016-08-10T22:41:50Z" finished-at="2016-08-10T22:41:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkResponseCodeForIncorrectRequest -->
-        <test-method status="PASS" signature="checkResponseContentTypeJson()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkResponseContentTypeJson" duration-ms="98" started-at="2016-06-07T11:36:40Z" finished-at="2016-06-07T11:36:40Z">
+        <test-method status="PASS" signature="checkResponseContentTypeJson()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkResponseContentTypeJson" duration-ms="125" started-at="2016-08-10T22:41:51Z" finished-at="2016-08-10T22:41:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkResponseContentTypeJson -->
-        <test-method status="PASS" signature="checkTheFirstRaceOf2014WasAtAlbertPark()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkTheFirstRaceOf2014WasAtAlbertPark" duration-ms="1358" started-at="2016-06-07T11:36:40Z" finished-at="2016-06-07T11:36:42Z">
+        <test-method status="PASS" signature="checkTheFirstRaceOf2014WasAtAlbertPark()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkTheFirstRaceOf2014WasAtAlbertPark" duration-ms="937" started-at="2016-08-10T22:41:51Z" finished-at="2016-08-10T22:41:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkTheFirstRaceOf2014WasAtAlbertPark -->
-        <test-method status="PASS" signature="checkThereWasARaceAtSilverstoneIn2014()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkThereWasARaceAtSilverstoneIn2014" duration-ms="136" started-at="2016-06-07T11:36:42Z" finished-at="2016-06-07T11:36:42Z">
+        <test-method status="PASS" signature="checkThereWasARaceAtSilverstoneIn2014()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkThereWasARaceAtSilverstoneIn2014" duration-ms="281" started-at="2016-08-10T22:41:52Z" finished-at="2016-08-10T22:41:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkThereWasARaceAtSilverstoneIn2014 -->
-        <test-method status="PASS" signature="checkThereWasNoRaceAtNurburgringIn2014()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkThereWasNoRaceAtNurburgringIn2014" duration-ms="122" started-at="2016-06-07T11:36:42Z" finished-at="2016-06-07T11:36:42Z">
+        <test-method status="PASS" signature="checkThereWasNoRaceAtNurburgringIn2014()[pri:0, instance:com.ontestautomation.restassured.workshop.answers.RestAssuredExercises1@3ac42916]" name="checkThereWasNoRaceAtNurburgringIn2014" duration-ms="141" started-at="2016-08-10T22:41:52Z" finished-at="2016-08-10T22:41:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkThereWasNoRaceAtNurburgringIn2014 -->
