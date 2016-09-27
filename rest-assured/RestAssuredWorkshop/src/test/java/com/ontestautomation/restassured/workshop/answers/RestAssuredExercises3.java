@@ -47,10 +47,13 @@ public class RestAssuredExercises3 {
 		
 		given().
 			auth().
-			oauth2("A101.J5TqBpFAmuBrZv_JVukpF0p966F0ec5DDTJ1lERTRWVQIhQadUaUGoRJg_tQabue.IphpS9Nm_ZoKM-L4nXSlMdgYfy0").
+			oauth2("A101.Z9Ld87BSuMFSxUxGiUL3FCabpcnr-yURg2S7HYngOc6104_4c0-RIC3CAqyrCjAD.ndfJOqSUk6dDNbGirW7EHU0mtZy").
 		when().
 			get("https://api.sandbox.paypal.com/v1/payments/payment/").
 		then().
+			log().
+			body().
+			and().
 			assertThat().
 			body("count",equalTo(0));
 	}
