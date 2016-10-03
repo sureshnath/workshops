@@ -71,4 +71,18 @@ public class WireMockAnswers2Tests {
 	        assertThat().
 	        body(equalTo("Exercise 204 passed"));
 	}
+	
+	@Test
+	public void testExercise205() {
+        
+	    wma.setupStubExercise205();
+	         
+	    given().
+	    	cookie("MyCookie","ChocolateChip").
+	    when().
+	        get("http://localhost:9876/exercise205").
+	    then().
+	        assertThat().
+	        body(equalTo("Exercise 205 passed"));
+	}
 }

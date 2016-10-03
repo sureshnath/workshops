@@ -57,4 +57,16 @@ public class WireMockExercises2 {
 		 ************************************************/
 
 	}
+	
+	public void setupStubExercise205() {
+
+		/************************************************
+		 * Create a stub that listens at path
+		 * /exercise205
+		 * and responds only to GET requests that contain
+		 * a cookie 'MyCookie' with value 'ChocolateChip'
+		 * Response body should equal 'Exercise 205 passed'
+		 ************************************************/
+
+	}
 }
