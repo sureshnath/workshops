@@ -22,7 +22,17 @@ public class WireMockExercises1 {
 		 * Create a stub that listens at path
 		 * /exercise102
 		 * and responds to all GET requests with a response
-		 * with MIME type text/plain and body 'Exercise 102'
+		 * with MIME type text/plain
+		 ************************************************/
+	}
+	
+	public void setupStubExercise103() {
+
+		/************************************************
+		 * Create a stub that listens at path
+		 * /exercise103
+		 * and responds to all GET requests with a response
+		 * with body 'Exercise 103'
 		 ************************************************/
 	}
 }

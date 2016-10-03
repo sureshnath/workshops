@@ -46,9 +46,23 @@ public class WireMockAnswers1Tests {
 	    	body().
 	    	and().
 	        assertThat().
-	        contentType(ContentType.TEXT).
-	        and().
-	        body(equalTo("Exercise 102"));
+	        contentType(ContentType.TEXT);
+	}
+	
+	@Test
+	public void testExercise103() {
+        
+	    wma.setupStubExercise103();
+	         
+	    given().
+	    when().
+	        get("http://localhost:9876/exercise103").
+	    then().
+	    	log().
+	    	body().
+	    	and().
+	        assertThat().
+	        body(equalTo("Exercise 103"));
 	}
 
 }

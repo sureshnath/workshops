@@ -27,13 +27,27 @@ public class WireMockAnswers1 {
 		 * Create a stub that listens at path
 		 * /exercise102
 		 * and responds to all GET requests with a response
-		 * with MIME type text/plain and body 'Exercise 102'
+		 * with MIME type text/plain
 		 ************************************************/
 		
 		stubFor(get(urlEqualTo("/exercise102"))
 				.willReturn(aResponse()
 						.withHeader("Content-Type", "text/plain")
-						.withBody("Exercise 102")
+				));
+	}
+	
+	public void setupStubExercise103() {
+
+		/************************************************
+		 * Create a stub that listens at path
+		 * /exercise103
+		 * and responds to all GET requests with a response
+		 * with body 'Exercise 103'
+		 ************************************************/
+		
+		stubFor(get(urlEqualTo("/exercise103"))
+				.willReturn(aResponse()
+						.withBody("Exercise 103")
 				));
 	}
 }

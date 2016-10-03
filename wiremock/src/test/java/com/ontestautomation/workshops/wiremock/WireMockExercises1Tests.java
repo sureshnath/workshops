@@ -23,7 +23,7 @@ public class WireMockExercises1Tests {
 	         
 	    given().
 	    when().
-	        post("http://localhost:9876/exercise101").
+	        get("http://localhost:9876/exercise101").
 	    then().
 	    	log().
 	    	body().
@@ -39,15 +39,28 @@ public class WireMockExercises1Tests {
 	         
 	    given().
 	    when().
-	        post("http://localhost:9876/exercise102").
+	        get("http://localhost:9876/exercise102").
 	    then().
 	    	log().
 	    	body().
 	    	and().
 	        assertThat().
-	        contentType(ContentType.TEXT).
-	        and().
-	        body(equalTo("Exercise 102"));
+	        contentType(ContentType.TEXT);
 	}
-
+	
+	@Test
+	public void testExercise103() {
+        
+	    wme.setupStubExercise103();
+	         
+	    given().
+	    when().
+	        get("http://localhost:9876/exercise103").
+	    then().
+	    	log().
+	    	body().
+	    	and().
+	        assertThat().
+	        body(equalTo("Exercise 103"));
+	}
 }
