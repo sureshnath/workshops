@@ -1,23 +1,29 @@
 package com.ontestautomation.restassured.workshop.exercises;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import java.util.concurrent.TimeUnit;
 
 import io.restassured.RestAssured;
 
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
 public class RestAssuredExercises3 {
 	
+	@BeforeClass
+	public void initPath() {
+		
+		RestAssured.baseURI = "http://localhost:9876";
+	}
+		
 	/*******************************************************
-	 * Request an authentication token for the Paypal sandbox
-	 * API and write the response to the console
-	 * Use Basic authentication
-	 * username = AUyqLmmlHyX4Th7BdXpIN-sKu5rARNpWLNtQZabRneRp5eDrKEU5pdiNIOMgc-4OiNu4jX8VJwfwWr1a
-	 * password = ECFXJmz2yW0WDf0itUE13jgaBhLkF5kEV9pyzt8iK9vvWgoSBRQ0HCywNIqYftSwXmB6EH_KOGq0nO39
-	 * https://api.sandbox.paypal.com/v1/oauth2/token
+	 * Request an authentication token API and write the
+	 * response to the console. Use preemptive Basic authentication:
+	 * username = oauth
+	 * password = gimmeatoken
+	 * Use /v1/oauth2/token
 	 ******************************************************/
 	
 	@BeforeClass
@@ -30,10 +36,10 @@ public class RestAssuredExercises3 {
 	
 	/*******************************************************
 	 * Request a list of payments for this account and check
-	 * that the number of payments made equals 0.
-	 * Use OAuth2 authenticatie with the previously retrieved
+	 * that the number of payments made equals 4.
+	 * Use OAuth2 authentication with the previously retrieved
 	 * authentication token.
-	 * https://api.sandbox.paypal.com/v1/payments/payment/
+	 * Use /v1/payments/payment/
 	 ******************************************************/
 	
 	@Test
@@ -45,13 +51,14 @@ public class RestAssuredExercises3 {
 	}
 	
 	/*******************************************************
-	 * Request the list of all circuits that ever hosted a
-	 * Formula 1 race and check that is request is answered
-	 * within 500 ms
+	 * Request the list of all circuits that hosted a
+	 * Formula 1 race in 2014 and check that this request is
+	 * answered within 100 ms
+	 * Use /api/f1/2014/circuits.json
 	 ******************************************************/
 	
 	@Test
-	public void checkResponseTimeForCircuitList() {
+	public void checkResponseTimeFor2014CircuitList() {
 		
 		given().
 		when().

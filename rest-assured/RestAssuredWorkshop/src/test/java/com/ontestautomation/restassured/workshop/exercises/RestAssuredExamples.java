@@ -1,34 +1,27 @@
 package com.ontestautomation.restassured.workshop.exercises;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.specification.ResponseSpecification;
 
-import java.util.concurrent.TimeUnit;
-
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class RestAssuredExamples {
-
-	@DataProvider(name = "drivers")
-	public Object[][] createDriverData() {
-		return new Object[][] {
-				{ "hamilton", "44" },
-				{ "max_verstappen", "33"},
-		};
-	}
 	
 	@Test
-	public void validateCountryForZipcode() {
-		
+	public void validateCountryForZipCode() {
+						
 		given().
 		when().
-			get("http://api.zippopotam.us/us/90210").	// Perform a GET call to the specified resource
+			get("http://localhost:9876/us/90210").
 		then().
-			assertThat().								// Check that the value of the element 'country'
-			body("country",equalTo("United States"));	// in the response equals 'United States'
+			assertThat().
+			body("country", equalTo("United States"));
 	}
-
+	
 	@Test
 	public void useQueryParametersSingleTestcase() {
 
@@ -62,31 +55,12 @@ public class RestAssuredExamples {
 			.body("MRData.DriverTable.Drivers.permanentNumber[0]",equalTo("33"));			
 	}
 	
-	@Test(dataProvider = "drivers")
-	public void useSinglePathParameterWithDataProvider(String driverName, String permanentNumber) {
-
-		given().
-			pathParam("driverName", driverName).
-		when().
-			get("http://ergast.com/api/f1/drivers/{driverName}.json").
-		then()
-			.body("MRData.DriverTable.Drivers.permanentNumber[0]",equalTo(permanentNumber));			
-	}
-
-	@Test
-	public void useMultiplePathParameters() {
-
-		given().
-			pathParam("driverName", "alonso").
-			pathParam("constructorName","renault").
-		when().
-			get("http://ergast.com/api/f1/drivers/{driverName}/constructors/{constructorName}/seasons.json").
-		then()
-			.body("MRData.SeasonTable.Seasons.season",hasItem("2003"));			
-	}	
+	private String accessToken;
 	
-	@Test
+	@BeforeClass
 	public void useBasicAuthentication() {
+		
+		accessToken =
 		
 		given().
 			params("grant_type","client_credentials").
@@ -96,16 +70,16 @@ public class RestAssuredExamples {
 		when().
 			post("https://api.sandbox.paypal.com/v1/oauth2/token").
 		then().
-			log().
-			body();
+			extract().
+			path("access_token");
 	}
 	
 	@Test
 	public void useOAuth2Authentication() {
-
+		
 		given().
 			auth().
-			oauth2("auth_token").
+			oauth2(accessToken).
 		when().
 			get("https://api.sandbox.paypal.com/v1/identity/openidconnect/userinfo/?schema=openid").
 		then().
@@ -114,26 +88,23 @@ public class RestAssuredExamples {
 	}
 	
 	@Test
-	public void checkResponseTime() {
+	public void useResponseSpecBuilder() {
+		
+		ResponseSpecBuilder rsBuilder = new ResponseSpecBuilder();
+		
+		rsBuilder.
+			expectStatusCode(200).
+				expectContentType(ContentType.JSON);
+		
+		ResponseSpecification respSpec = rsBuilder.build();
 		
 		given().
 		when().
-			get("http://ergast.com/api/f1/circuits/monza.json").
+			get("http://localhost:9876/us/90210").
 		then().
-			assertThat().
-			time(lessThan(100L), TimeUnit.MILLISECONDS);
-	}
-	
-	@Test
-	public void checkResponseHeaders() {
-		
-		given().
-		when().
-			get("http://api.zippopotam.us/us/90210").
-		then().
-			assertThat().
-			statusCode(200).
+			spec(respSpec).
 			and().
-			contentType("application/json");
+			assertThat().
+			body("country", equalTo("United States"));
 	}
 }

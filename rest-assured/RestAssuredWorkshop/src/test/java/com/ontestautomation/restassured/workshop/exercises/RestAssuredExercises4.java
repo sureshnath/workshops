@@ -1,13 +1,11 @@
 package com.ontestautomation.restassured.workshop.exercises;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
+import io.restassured.RestAssured;
 
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import io.restassured.RestAssured;
 
 public class RestAssuredExercises4 {
 	
@@ -15,15 +13,48 @@ public class RestAssuredExercises4 {
 	 * Request an authentication token for the Paypal sandbox
 	 * API and write the response to the console
 	 * Use Basic authentication
-	 * username = AUyqLmmlHyX4Th7BdXpIN-sKu5rARNpWLNtQZabRneRp5eDrKEU5pdiNIOMgc-4OiNu4jX8VJwfwWr1a
-	 * password = ECFXJmz2yW0WDf0itUE13jgaBhLkF5kEV9pyzt8iK9vvWgoSBRQ0HCywNIqYftSwXmB6EH_KOGq0nO39
-	 * https://api.sandbox.paypal.com/v1/oauth2/token
+	 * username = oauth
+	 * password = gimmeatoken
+	 * Use /v1/oauth2/token
 	 * Store this authentication token in a String variable
 	 * for future reference
 	 ******************************************************/
-	
+		
 	@BeforeClass
 	public void retrieveOAuthToken() {
+		
+		RestAssured.baseURI = "http://localhost:9876";
+						
+		given().
+		when().
+		then();
+	}
+	
+	/*******************************************************
+	 * Create a ResponseSpecification that checks whether:
+	 * - the response has statusCode 200
+	 * - the response contentType is JSON
+	 * - the value of MRData.CircuitTable.Circuits.circuitName[0]
+	 *   is equal to 'Albert Park Grand Prix Circuit'
+	 ******************************************************/
+	
+	@BeforeClass
+	public void createResponseSpecification() {
+		
+		RestAssured.baseURI = "http://localhost:9876";
+		
+	}
+	
+	/*******************************************************
+	 * Request a list of payments for this account and check
+	 * that the number of payments made equals 4.
+	 * Use OAuth2 authenticatie with the previously stored
+	 * authentication token.
+	 * Use /v1/payments/payment/
+	 ******************************************************/
+	
+	@Test
+	public void checkNumberOfPayments() {
 		
 		given().
 		when().
@@ -31,15 +62,15 @@ public class RestAssuredExercises4 {
 	}
 	
 	/*******************************************************
-	 * Request a list of payments for this account and check
-	 * that the number of payments made equals 0.
-	 * Use OAuth2 authenticatie with the previously retrieved
-	 * authentication token.
-	 * https://api.sandbox.paypal.com/v1/payments/payment/
+	 * Retrieve the circuit data for the first race in 2014
+	 * Use the previously created ResponseSpecification to
+	 * execute the specified checks
+	 * Use /api/f1/2014/1/circuits.json
+	 * Additionally, check that the circuit is located in Melbourne
 	 ******************************************************/
 	
 	@Test
-	public void checkNumberOfPayments() {
+	public void useResponseSpecification() {
 		
 		given().
 		when().
