@@ -12,8 +12,8 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 
 public class WireMockExamplesTests {
 	
-	WireMockExamples wme = new WireMockExamples();
-		
+	WireMockExamples wme = new WireMockExamples();	
+	
 	@Rule
 	public WireMockRule wireMockRule = new WireMockRule(9876);
 	

@@ -9,7 +9,7 @@ public class WireMockExamples {
 		
 	public WireMockExamples() {		
 	}
-	
+		
 	public void setupExampleStub() {
 
 		stubFor(post(urlEqualTo("/pingpong"))
