@@ -25,13 +25,15 @@ public class RestAssuredExercises3 {
 	 * password = gimmeatoken
 	 * Use /v1/oauth2/token
 	 ******************************************************/
-	
+
+	String accessToken;
+
 	@BeforeClass
 	public void retrieveOAuthToken() {
-		
-		given().
-		when().
-		then();
+		accessToken =
+		given().auth().preemptive().basic("oauth","gimmeatoken").
+		when().get("/v1/oauth2/token").
+		then().log().body().extract().path("access_token");
 	}
 	
 	/*******************************************************
@@ -46,8 +48,12 @@ public class RestAssuredExercises3 {
 	public void checkNumberOfPayments() {
 		
 		given().
+                auth().oauth2(accessToken).
 		when().
-		then();
+                get("/v1/payments/payment/").
+		then().
+                body("paymentsCount", equalTo(4))
+        ;
 	}
 	
 	/*******************************************************
@@ -62,6 +68,7 @@ public class RestAssuredExercises3 {
 		
 		given().
 		when().
-		then();
+                get("/api/f1/2014/circuits.json").
+		then().time(lessThan(100L), TimeUnit.MILLISECONDS);
 	}
 }

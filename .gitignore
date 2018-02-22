@@ -1,0 +1,10 @@
+
+# IDEA
+**/.idea/
+*.iml
+*.ipr
+*.iws
+
+# ignore temp files
+**/__files/
+**/target/

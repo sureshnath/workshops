@@ -3,6 +3,7 @@ package com.ontestautomation.workshops.wiremock;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 import com.github.tomakehurst.wiremock.http.Fault;
+import org.apache.http.client.ClientProtocolException;
 
 public class WireMockExercises3 {
 	
@@ -18,6 +19,12 @@ public class WireMockExercises3 {
 		 * status code 503 and a status message equal to
 		 * 'Service unavailable'
 		 ************************************************/
+		stubFor(get("/exercise301")
+                .willReturn(aResponse()
+                        .withStatus(503)
+                        .withStatusMessage("Service unavailable")
+                )
+        );
 
 	}
 	
@@ -29,6 +36,11 @@ public class WireMockExercises3 {
 		 * and responds to all GET requests with a fixed
 		 * delay of 2000 milliseconds
 		 ************************************************/
+        stubFor(get("/exercise302")
+                .willReturn(aResponse()
+                        .withFixedDelay(2000)
+                )
+        );
 
 	}
 	
@@ -39,6 +51,12 @@ public class WireMockExercises3 {
 		 * /exercise303
 		 * and responds to all GET requests with garbage
 		 ************************************************/
+        stubFor(get("/exercise303")
+                .willReturn(aResponse()
+                        .withFault( Fault.RANDOM_DATA_THEN_CLOSE)
+                )
+        );
 
-	}
+
+    }
 }

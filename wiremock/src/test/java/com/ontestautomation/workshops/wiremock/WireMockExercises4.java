@@ -5,10 +5,15 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import com.github.tomakehurst.wiremock.stubbing.Scenario;
 
 public class WireMockExercises4 {
-	
-	public WireMockExercises4() {
+
+    public WireMockExercises4() {
 	}
-	
+
+
+    private static final String SCENARIO_NAME = "Light bulb";
+    private static final String STATE_LIGHT_OFF = "LIGHT_OFF";
+	private static final String STATE_LIGHT_ON = "LIGHT_ON";
+
 	public void setupStubExercise401() {
 
 		/************************************************
@@ -25,5 +30,37 @@ public class WireMockExercises4 {
 		 * - 5. A 3rd GET returns a body 'Light is ON'
 		 ************************************************/
 
-	}
+		stubFor(get("/exercise401").inScenario(SCENARIO_NAME)
+                .whenScenarioStateIs(Scenario.STARTED)
+				.willReturn(ok("No light bulb found")
+                )
+        );
+
+		stubFor(get("/exercise401").inScenario(SCENARIO_NAME)
+                .whenScenarioStateIs(STATE_LIGHT_OFF)
+				.willReturn(ok("Light is OFF")
+                )
+        );
+
+		stubFor(get("/exercise401").inScenario(SCENARIO_NAME)
+                .whenScenarioStateIs(STATE_LIGHT_ON)
+				.willReturn(ok("Light is ON")
+                )
+        );
+
+		stubFor(post("/exercise401").inScenario(SCENARIO_NAME)
+                .withRequestBody(containing("Insert light bulb"))
+                .willSetStateTo(STATE_LIGHT_OFF)
+				.willReturn(ok("Light bulb inserted")
+                )
+        );
+
+		stubFor(post("/exercise401").inScenario(SCENARIO_NAME)
+                .withRequestBody(containing("Switch light ON"))
+                .willSetStateTo(STATE_LIGHT_ON)
+				.willReturn(ok("Light has been turned ON")
+                )
+        );
+
+    }
 }
